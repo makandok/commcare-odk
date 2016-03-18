@@ -305,12 +305,12 @@ public class AndroidSessionWrapper {
                 //We have an entry. Don't worry too much about how we're supposed to get there for now.
 
                 //The ideal is that we only need one piece of data
-                if (e.getSessionDataReqs().size() == 1) {
+                Vector<SessionDatum> neededDatums = e.getSessionDataReqs();
+                if (neededDatums.size() == 1) {
                     //This should fit the bill. Single selection.
-                    SessionDatum datum = e.getSessionDataReqs().firstElement();
+                    SessionDatum datum = neededDatums.firstElement();
 
                     //The only thing we need to know now is whether we have a better option available
-
                     int countPredicates = CommCareUtil.countPreds(datum.getNodeset());
 
                     if (wrapper == null) {
@@ -330,6 +330,17 @@ public class AndroidSessionWrapper {
                     wrapper.session.setCommand(platform.getModuleNameForEntry((FormEntry)e));
                     wrapper.session.setCommand(e.getCommandId());
                     wrapper.session.setDatum(datum.getDataId(), selectedValue);
+                } else {
+                    wrapper = new AndroidSessionWrapper(platform);
+                    wrapper.session.setCommand(platform.getModuleNameForEntry((FormEntry)e));
+                    wrapper.session.setCommand(e.getCommandId());
+
+                    SessionDatum datum = neededDatums.lastElement();
+                    wrapper.session.setDatum(datum.getDataId(), selectedValue);
+                    for (int i = 0; i < neededDatums.size(); i++) {
+                        datum = neededDatums.elementAt(i);
+                        wrapper.session.setDatum(datum.getDataId(), "000");
+                    }
                 }
 
                 //We don't really have a good thing to do with this yet. For now, just
