@@ -3,13 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
-    android:orientation="horizontal"
-    >
+    android:orientation="horizontal">
 
     <ImageView
-        android:padding="@dimen/cell_padding_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="@dimen/cell_padding_horizontal"
         android:src="@drawable/avatar_form"/>
 
     <RelativeLayout
@@ -18,37 +17,37 @@
         android:layout_height="fill_parent">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:id="@+id/formrecord_txt_right"
-            android:textColor="?attr/filter_select_text_color"
-            android:layout_alignParentBottom="true"></TextView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:id="@+id/formrecord_txt_upp_right"
-            android:layout_above="@+id/formrecord_txt_right"
-            android:textColor="?attr/filter_select_text_color"
-            android:gravity="right"></TextView>
+            android:textColor="?attr/filter_select_text_color"/>
 
         <TextView
+            android:id="@+id/formrecord_txt_upp_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/formrecord_txt_right"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:textColor="?attr/filter_select_text_color"/>
+
+        <TextView
             android:id="@+id/formrecord_txt_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/formrecord_txt_upp_right"
             android:gravity="left"
-            android:textColor="?attr/filter_select_text_color"
-            android:layout_toLeftOf="@id/formrecord_txt_upp_right"></TextView>
+            android:textColor="?attr/filter_select_text_color"/>
 
         <TextView
+            android:id="@+id/formrecord_txt_btm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/formrecord_txt_btm"
-            android:textColor="?attr/filter_select_text_color"
-            android:layout_below="@+id/formrecord_txt_main"></TextView>
+            android:layout_below="@+id/formrecord_txt_main"
+            android:textColor="?attr/filter_select_text_color"/>
     </RelativeLayout>
 </LinearLayout>
