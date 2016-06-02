@@ -24,7 +24,6 @@ import org.commcare.models.encryption.ByteEncrypter;
 import org.commcare.models.encryption.CryptUtil;
 import org.commcare.modern.models.RecordTooLargeException;
 import org.commcare.network.DataPullRequester;
-import org.commcare.network.DataPullResponseFactory;
 import org.commcare.network.RemoteDataPullResponse;
 import org.commcare.preferences.CommCarePreferences;
 import org.commcare.resources.model.CommCareOTARestoreListener;
