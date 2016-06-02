@@ -59,14 +59,17 @@ public abstract class FormRecordCleanupTask<R> extends CommCareTask<Void, Intege
 
     public static final int STATUS_CLEANUP = -1;
     private static final int SUCCESS = -1;
-    private final String recordStatus;
+    private final String newRecordStatus;
 
+    /**
+     * @param newRecordStatus Set all unindexed records to have this status
+     */
     public FormRecordCleanupTask(Context context, CommCarePlatform platform,
-                                 int taskId, String recordStatus) {
+                                 int taskId, String newRecordStatus) {
         this.context = context;
         this.platform = platform;
         this.taskId = taskId;
-        this.recordStatus = recordStatus;
+        this.newRecordStatus = newRecordStatus;
     }
 
     @Override
@@ -86,7 +89,7 @@ public abstract class FormRecordCleanupTask<R> extends CommCareTask<Void, Intege
             FormRecord r = storage.read(recordID);
 
             try {
-                updateAndWriteUnindexedRecordTo(context, platform, r, storage, recordStatus);
+                updateAndWriteUnindexedRecordTo(context, platform, r, storage, newRecordStatus);
             } catch (FileNotFoundException | InvalidStructureException e) {
                 // No form or bad form data, mark for deletion
                 recordsToRemove.add(recordID);

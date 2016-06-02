@@ -45,7 +45,6 @@ public class IncompleteFormRecordView extends LinearLayout {
         mRightTextView = (TextView)vg.findViewById(R.id.formrecord_txt_right);
         mUpperRight = (TextView)vg.findViewById(R.id.formrecord_txt_upp_right);
 
-        mPrimaryTextView.setTextAppearance(context, android.R.style.TextAppearance_Large);
         mUpperRight.setTextAppearance(context, android.R.style.TextAppearance_Large);
 
         LayoutParams l = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);

@@ -90,7 +90,7 @@ public class IncompleteFormListAdapter extends BaseAdapter implements FormRecord
         for (Suite s : platform.getInstalledSuites()) {
             for (Enumeration en = s.getEntries().elements(); en.hasMoreElements(); ) {
                 Entry entry = (Entry) en.nextElement();
-                if (!(entry.isView() || entry.isSync())) {
+                if (!entry.isView()) {
                     String namespace = ((FormEntry)entry).getXFormNamespace();
                     //Some of our old definitions for views still come in as entries with dead
                     //namespaces for now, so check. Can clean up when FormEntry's enforce a
@@ -162,9 +162,9 @@ public class IncompleteFormListAdapter extends BaseAdapter implements FormRecord
         // Grab all form records that satisfy ANY of the statuses in the filter, AND belong to the
         // currently seated app
         for (String status : filter.getStatus()) {
-            records.addAll(storage.getRecordsForValues(
-                    new String[]{FormRecord.META_STATUS, FormRecord.META_APP_ID},
-                    new Object[]{status, currentAppId}));
+            records.addAll(
+                    storage.getRecordsForValues(new String[]{FormRecord.META_STATUS, FormRecord.META_APP_ID}, new Object[]{status, currentAppId})
+            );
         }
 
         // Sort FormRecords by modification time, most recent first.
